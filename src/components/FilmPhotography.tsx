@@ -1,10 +1,11 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
-import { X } from 'lucide-react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
 export function FilmPhotography() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
 
   const photos = [
     '/images/andrewsmom.jpg',
@@ -44,15 +45,18 @@ export function FilmPhotography() {
         <div className="container mx-auto max-w-7xl">
           <h2 className="serif-font text-4xl mb-16 text-center">Selected Work</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((photo, index) => (
+            {photos.map((photo, i) => (
               <div
-                key={index}
+                key={i}
                 className="relative aspect-[3/4] overflow-hidden group cursor-pointer"
-                onClick={() => setSelectedImage(photo)}
+                onClick={() => {
+                  setIndex(i);
+                  setOpen(true);
+                }}
               >
                 <ImageWithFallback
                   src={photo}
-                  alt={`Film Photography ${index + 1}`}
+                  alt={`Film Photography ${i + 1}`}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
@@ -62,30 +66,12 @@ export function FilmPhotography() {
         </div>
       </section>
 
-      {/* Image Modal */}
-      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-white/10">
-          <DialogTitle className="sr-only">Film Photography Viewer</DialogTitle>
-          <DialogDescription className="sr-only">
-            Full-size view of selected photograph
-          </DialogDescription>
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-          >
-            <X className="w-6 h-6 text-white" />
-          </button>
-          {selectedImage && (
-            <div className="flex items-center justify-center w-full h-full p-8">
-              <img
-                src={selectedImage}
-                alt="Selected photograph"
-                className="max-w-full max-h-full object-contain"
-              />
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={index}
+        slides={photos.map((src) => ({ src }))}
+      />
     </div>
   );
 }

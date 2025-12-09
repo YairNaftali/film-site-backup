@@ -26,7 +26,7 @@ export function Contact() {
                 />
               </div>
               <a
-                href="/resume.pdf"
+                href="/images/resume.pdf"
                 download
                 className="flex items-center gap-2 px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors tracking-wider w-full justify-center"
               >
@@ -111,60 +111,40 @@ I am open to learning more about all opportunities and look forward to connectin
             {/* Contact Form */}
             <div>
               <h2 className="serif-font text-3xl mb-8">Send a Message</h2>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block mb-2 text-white/80">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-3 bg-zinc-900 border border-white/10 focus:border-white/30 outline-none transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block mb-2 text-white/80">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-3 bg-zinc-900 border border-white/10 focus:border-white/30 outline-none transition-colors"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block mb-2 text-white/80">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-3 bg-zinc-900 border border-white/10 focus:border-white/30 outline-none transition-colors"
-                    placeholder="Project inquiry"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block mb-2 text-white/80">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    className="w-full px-4 py-3 bg-zinc-900 border border-white/10 focus:border-white/30 outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
+              <form
+                action="https://formspree.io/f/mdkqzznb"
+                method="POST"
+                className="space-y-4"
+              >
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  className="w-full px-4 py-2 bg-black/40 border border-white/20 text-white"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  required
+                  className="w-full px-4 py-2 bg-black/40 border border-white/20 text-white"
+                />
+
+                <textarea
+                  name="message"
+                  placeholder="Your message"
+                  required
+                  rows={5}
+                  className="w-full px-4 py-2 bg-black/40 border border-white/20 text-white"
+                />
+
                 <button
                   type="submit"
-                  className="w-full px-8 py-3 bg-white text-black hover:bg-white/90 transition-colors tracking-wider"
+                  className="px-6 py-2 border border-white/40 hover:bg-white hover:text-black transition-colors tracking-wider"
                 >
-                  Send Message
+                  Send
                 </button>
               </form>
             </div>

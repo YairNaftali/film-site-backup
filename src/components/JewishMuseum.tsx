@@ -9,7 +9,7 @@ export function JewishMuseum() {
       title: 'The Rebbitzen Project',
       location: 'Main Exhibition Hall',
       description: "Since so much of the museum's collection represents the duties of men and boys, yet so much of daily life is made possible by women, I took on the responsibility of showing a holistic picture of Jewish life. Exhibited in their permanent collection alongside objects pertaining to Rabbis, The Jewish Museum will showcase my portraits of Rebbitzins and the blurb created describing their personal role and contributions to their community.",
-      image: '/images/RebbitzenProject.jpg',
+      image: '/images/rebbitzenproject.jpg',
       category: 'Project',
     },
     {

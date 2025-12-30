@@ -28,17 +28,26 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm tracking-wider transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-white'
-                    : 'text-white/60 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </Link>
+              link.path === '/cinematography' ? (
+                <span
+                  key={link.path}
+                  className="text-sm tracking-wider text-white/60 cursor-default"
+                >
+                  cinematography reel coming soon
+                </span>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`text-sm tracking-wider transition-colors ${
+                    location.pathname === link.path
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -56,18 +65,27 @@ export function Navigation() {
         {isOpen && (
           <div className="lg:hidden mt-4 pb-4 space-y-4">
             {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block text-sm tracking-wider transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-white'
-                    : 'text-white/60 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </Link>
+              link.path === '/cinematography' ? (
+                <span
+                  key={link.path}
+                  className="block text-sm tracking-wider text-white/60"
+                >
+                  cinematography reel coming soon
+                </span>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block text-sm tracking-wider transition-colors ${
+                    location.pathname === link.path
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
         )}

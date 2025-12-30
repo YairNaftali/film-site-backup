@@ -6,17 +6,14 @@ export function LandingPage() {
     <div className="min-h-screen bg-black text-white">
       {/* Video Background Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background - using a dark overlay with animated gradient as placeholder */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black animate-gradient" />
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
-          </div>
-          {/* Note: Replace this with actual video element when video is available */}
-          {/* <video autoPlay muted loop className="w-full h-full object-cover opacity-50">
-            <source src="/path-to-video.mp4" type="video/mp4" />
-          </video> */}
+          <img
+            src="/images/beddark.jpeg"
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         {/* Content */}
@@ -32,7 +29,7 @@ export function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/cinematography"
+              to="/the-golem"
               className="px-8 py-3 bg-white text-black hover:bg-white/90 transition-colors tracking-wider"
             >
               View Work

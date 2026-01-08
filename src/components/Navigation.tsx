@@ -33,7 +33,7 @@ export function Navigation() {
                   key={link.path}
                   className="text-sm tracking-wider text-white/60 cursor-default"
                 >
-                  cinematography reel coming soon
+                  Cinematography Reel Coming Soon
                 </span>
               ) : (
                 <Link
@@ -70,7 +70,7 @@ export function Navigation() {
                   key={link.path}
                   className="block text-sm tracking-wider text-white/60"
                 >
-                  cinematography reel coming soon
+                  Cinematography Reel <br />Coming Soon
                 </span>
               ) : (
                 <Link

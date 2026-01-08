@@ -22,7 +22,7 @@ export function CinematographyReel() {
         <div className="relative z-10 text-center px-6">
           <h1 className="serif-font text-5xl md:text-7xl mb-6">Cinematography Reel</h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Coming soon
+            Coming&nbsp;Soon
           </p>
         </div>
       </section>

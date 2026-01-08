@@ -21,8 +21,11 @@ export function LandingPage() {
           <h1 className="serif-font text-6xl md:text-8xl mb-6 tracking-wide">
             Bubba Meisa
           </h1>
-          <p className="elegant-font text-2xl md:text-4xl text-white/80 mb-12">
+          <p className="elegant-font text-2xl md:text-4xl text-white/80 mb-3">
             Productions
+          </p>
+          <p className="text-base md:text-lg text-white/70 mb-8">
+            By Aline Frances Chalfin
           </p>
           <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12">
              Bubbe always told us to never let the truth get in the way of a good story.

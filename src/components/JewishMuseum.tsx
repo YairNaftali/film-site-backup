@@ -17,7 +17,7 @@ export function JewishMuseum() {
       title: 'Forgotten Jewish Villages of Alsace',
       location: 'Research & Archive',
       description: 'Together with two specialists in the history of rural Judaism, my time at the museum was spent documenting the traces of Jewish rural life in the 18th and 19th centuries in Alsace.',
-      image: '/images/forgottenvillages.jpg',
+      image: '/images/ForgottenVillages.jpg',
       category: 'Research',
     },
     {

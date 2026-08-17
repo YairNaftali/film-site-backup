@@ -22,7 +22,7 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="serif-font text-white text-xl tracking-wide">
-            BUBBA MEISA PRODUCTIONS
+            BUBBE MEISE PRODUCTIONS
           </Link>
 
           {/* Desktop Navigation */}

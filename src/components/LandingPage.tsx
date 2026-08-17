@@ -19,7 +19,7 @@ export function LandingPage() {
         {/* Content */}
         <div className="relative z-10 text-center px-6">
           <h1 className="serif-font text-6xl md:text-8xl mb-6 tracking-wide">
-            Bubba Meisa
+            Bubbe Meise
           </h1>
           <p className="elegant-font text-2xl md:text-4xl text-white/80 mb-3">
             Productions

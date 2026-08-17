@@ -2,7 +2,7 @@
   "name": "film-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Film portfolio website for Bubba Meisa Productions",
+  "description": "Film portfolio website for Bubbe Meise Productions",
   "homepage": "https://smileybones.github.io/film-site/",
   "scripts": {
     "dev": "vite",

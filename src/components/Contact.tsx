@@ -62,7 +62,7 @@ I am open to learning more about all opportunities and look forward to connectin
                   <Mail className="text-white/60 mt-1" size={24} />
                   <div>
                     <p className="text-white/40 mb-1">Email</p>
-                    <a href="mailto:aline@bubbameisa.com" className="text-lg hover:text-white/80 transition-colors">
+                    <a href="mailto:alinechalfin@gmail.com" className="text-lg hover:text-white/80 transition-colors">
                       alinechalfin@gmail.com
                     </a>
                   </div>

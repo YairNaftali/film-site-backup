@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { LandingPage } from './components/LandingPage';
-import { CinematographyReel } from './components/CinematographyReel';
 import { TheGolem } from './components/TheGolem';
 import { JewishMuseum } from './components/JewishMuseum';
 import { DigitalPhotography } from './components/DigitalPhotography';
@@ -15,7 +14,6 @@ export default function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/cinematography" element={<CinematographyReel />} />
         <Route path="/the-golem" element={<TheGolem />} />
         <Route path="/jewish-museum" element={<JewishMuseum />} />
         <Route path="/rebbitzen" element={<Rebbitzen />} />

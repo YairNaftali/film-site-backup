@@ -58,14 +58,14 @@ export function LandingPage() {
         <div className="container mx-auto max-w-7xl">
           <h2 className="serif-font text-4xl md:text-5xl text-center mb-16">Featured Work</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Link to="/cinematography" className="group relative overflow-hidden aspect-[4/5]">
+            <Link to="/film-photography" className="group relative overflow-hidden aspect-[4/5]">
               <img
-                src="/images/cinematography.jpg"
-                alt="Cinematography"
+                src="/images/Hilary.jpg"
+                alt="Film Photography"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex items-end p-6">
-                <h3 className="serif-font text-2xl">Cinematography Reel</h3>
+                <h3 className="serif-font text-2xl">Film Photography</h3>
               </div>
             </Link>
 

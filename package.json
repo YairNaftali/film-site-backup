@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "Film portfolio website for Bubbe Meise Productions",
-  "homepage": "https://smileybones.github.io/film-site/",
+  "homepage": "https://bubbemeiseproductions.com/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "images": "sh scripts/optimize-images.sh",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -15,15 +16,17 @@
     "lucide-react": "^0.487.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "*",
+    "react-router-dom": "^7.18.1",
     "yet-another-react-lightbox": "^3.25.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "4.1.3",
     "@types/node": "^20.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
     "gh-pages": "^6.3.0",
+    "tailwindcss": "4.1.3",
     "typescript": "^5.9.3",
     "vite": "^6.4.1"
   }

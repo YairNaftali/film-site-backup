@@ -2,6 +2,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { thumb, full } from '../img';
 
 export function DigitalPhotography() {
   const photos = [
@@ -40,20 +41,21 @@ export function DigitalPhotography() {
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((src, i) => (
-              <div
+              <button
+                type="button"
                 key={i}
-                className="group relative aspect-[4/5] overflow-hidden bg-zinc-900 cursor-pointer"
+                className="group relative block w-full aspect-[4/5] overflow-hidden bg-zinc-900 cursor-pointer"
                 onClick={() => {
                   setIndex(i);
                   setOpen(true);
                 }}
               >
                 <ImageWithFallback
-                  src={src}
+                  src={thumb(src)}
                   alt={`Digital Photography ${i + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -63,7 +65,7 @@ export function DigitalPhotography() {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={photos.map((src) => ({ src }))}
+        slides={photos.map((src) => ({ src: full(src) }))}
       />
     </div>
   );

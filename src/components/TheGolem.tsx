@@ -3,6 +3,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { thumb, full } from '../img';
 
 export function TheGolem() {
   const btsPhotos = [
@@ -28,31 +29,43 @@ export function TheGolem() {
 
   const headshotSlides = ['/images/b5bfc1f9a7-headshot.jpg'];
   const crewSlides = ['/images/crew.jpg'];
-  const crewCredits = [
-    'Directed by',
-    'Aline Chalfin',
-    'Spencer Linn',
-    'Director of Photography: Aydan Metsch',
-    'Ami: Adam Rydl',
-    'Rabbi: Bogomil Shopov',
-    'Extras: Barry Evans, Emmet Kneafsey, James Hillefeld, Steven Burgess, Graham Hazleton',
-    'Producer: Tamara Hajičková',
-    'Production Manager: Jiřina Chytilová',
-    '1st AD: Zipporah Fornah',
-    'Art Director: Maya Giurgi',
-    '1st AC: Joe Sato Murphy',
-    '2nd AC: Nic Hatton',
-    'Camera Supervisor: Riyana Lama',
-    'Gaffer: JP Tehamlik',
-    'Grip: Emmet Kneafske',
-    'Gaffer Assistant: James Hellefeld',
-    'Sound: Morgan Andrade',
-    'Boom Operator: Talya Dersu',
-    'Continuity: Graham Hazleton',
-    'Make-up Artist: Evie Rhody',
-    '1st PA: Emma Szumowská',
-    '2nd PA: Michaella Brollová',
-    'Behind-the-Scenes Photography: Steven Burgess, Elmira & Duarte / FAMU INTERNATIONAL',
+  const creators = [
+    { name: 'Aline Frances Chalfin', roles: 'Director, Writer' },
+    { name: 'Spencer Linn', roles: 'Director' },
+    { name: 'Aydan Metsch', roles: 'Director, Writer' },
+  ];
+  const crewCredits: { role: string; names: string[]; wide?: boolean }[] = [
+    { role: 'Directed by', names: ['Aline Chalfin', 'Spencer Linn', 'Aydan Metsch'] },
+    { role: 'Written by', names: ['Aydan Metsch', 'Aline Chalfin'] },
+    { role: 'Director of Photography', names: ['Aydan Metsch'] },
+    { role: 'Ami', names: ['Adam Rydl'] },
+    { role: 'Rabbi', names: ['Bogomil Shopov'] },
+    {
+      role: 'Extras',
+      names: ['Barry Evans, Emmet Kneafsey, James Hillefeld, Steven Burgess, Graham Hazleton'],
+      wide: true,
+    },
+    { role: 'Producer', names: ['Tamara Hajičková'] },
+    { role: 'Production Manager', names: ['Jiřina Chytilová'] },
+    { role: '1st AD', names: ['Zipporah Fornah'] },
+    { role: 'Art Director', names: ['Maya Giurgi'] },
+    { role: '1st AC', names: ['Joe Sato Murphy'] },
+    { role: '2nd AC', names: ['Nic Hatton'] },
+    { role: 'Camera Supervisor', names: ['Riyana Lama'] },
+    { role: 'Gaffer', names: ['JP Tehamlik'] },
+    { role: 'Grip', names: ['Emmet Kneafsey'] },
+    { role: 'Gaffer Assistant', names: ['James Hillefeld'] },
+    { role: 'Sound', names: ['Morgan Andrade'] },
+    { role: 'Boom Operator', names: ['Talya Dersu'] },
+    { role: 'Continuity', names: ['Graham Hazleton'] },
+    { role: 'Make-up Artist', names: ['Evie Rhody'] },
+    { role: '1st PA', names: ['Emma Szumowská'] },
+    { role: '2nd PA', names: ['Michaella Brollová'] },
+    {
+      role: 'Behind-the-Scenes Photography',
+      names: ['Steven Burgess, Elmira & Duarte / FAMU INTERNATIONAL'],
+      wide: true,
+    },
   ];
 
   const [open, setOpen] = useState(false);
@@ -67,19 +80,24 @@ export function TheGolem() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/images/golem.gif"
-            alt="The Golem"
+          <video
+            src="/images/golem.mp4"
+            poster="/images/golem-poster.webp"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black" />
         </div>
         <div className="relative z-10 text-center px-6">
           <img
-            src="/images/golem.png"
-            alt="The Golem Logo"
+            src={thumb('/images/golem.png')}
+            alt="The Golem"
             className="mx-auto mb-6"
-            style={{ width: '700px', height: 'auto' }}
+            style={{ width: '700px', maxWidth: '100%', height: 'auto' }}
           />
           <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
             In 17th century Prague, a young boy facing persecution seeks help by reviving the ancient legend of the Golem
@@ -115,7 +133,7 @@ export function TheGolem() {
               <p className="text-xl">16mm</p>
             </div>
           </div>
-          <div className="prose prose-invert max-w-none">
+          <div className="max-w-none">
             <p className="text-lg text-white/70 leading-relaxed mb-6">
               A young apprentice studies ancient alchemy and kabbalistic texts in secret when he hears a knock at the door and scrambles to hide the texts from his mentor.
             </p>
@@ -136,26 +154,27 @@ export function TheGolem() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {productionStills.map((photo, i) => (
-              <div
+              <button
+                type="button"
                 key={i}
-                className="group relative aspect-video overflow-hidden bg-zinc-900 cursor-pointer"
+                className="group relative block w-full aspect-video overflow-hidden bg-zinc-900 cursor-pointer"
                 onClick={() => {
                   setStillsIndex(i);
                   setStillsOpen(true);
                 }}
               >
                 <ImageWithFallback
-                  src={photo}
+                  src={thumb(photo)}
                   alt={`Production still ${i + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
+              </button>
             ))}
             <Lightbox
               open={stillsOpen}
               close={() => setStillsOpen(false)}
               index={stillsIndex}
-              slides={productionStills.map((src) => ({ src }))}
+              slides={productionStills.map((src) => ({ src: full(src) }))}
             />
           </div>
         </div>
@@ -164,49 +183,68 @@ export function TheGolem() {
       {/* Meet the Creators & Meet the Crew Section */}
       <section className="py-24 px-6 bg-zinc-950">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Meet the Creators */}
-            <div>
-              <h2 className="serif-font text-4xl mb-8">Meet the Creators</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <button type="button" onClick={() => setHeadshotOpen(true)} className="block w-full h-full">
-                    <ImageWithFallback
-                      src="/images/b5bfc1f9a7-headshot.jpg"
-                      alt="Film creators"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                </div>
-                <div className="flex flex-col justify-center">
-                  <p className="text-lg text-white/70 mb-2">Aline Frances Chalfin</p>
-                  <p className="text-lg text-white/70 mb-2">Spencer Linn</p>
-                  <p className="text-lg text-white/70">Aydan Metsch</p>
-                </div>
-              </div>
+          {/* Meet the Creators */}
+          <div className="mb-24">
+            <h2 className="serif-font text-4xl mb-8">Meet the Creators</h2>
+            <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+              <button
+                type="button"
+                onClick={() => setHeadshotOpen(true)}
+                className="md:col-span-2 block w-full aspect-[3/2] overflow-hidden cursor-pointer"
+              >
+                <ImageWithFallback
+                  src={thumb('/images/b5bfc1f9a7-headshot.jpg')}
+                  alt="Film creators"
+                  className="w-full h-full object-cover"
+                />
+              </button>
+              <ul className="md:col-span-3 border-b border-white/10">
+                {creators.map((c) => (
+                  <li
+                    key={c.name}
+                    className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 py-5 border-t border-white/10"
+                  >
+                    <span className="serif-font text-2xl">{c.name}</span>
+                    <span className="text-white/60">{c.roles}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
 
-            {/* Meet the Crew */}
-            <div>
-              <h2 className="serif-font text-4xl mb-8">Meet the Crew</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <button type="button" onClick={() => setCrewOpen(true)} className="block w-full h-full">
-                    <ImageWithFallback
-                      src="/images/crew.jpg"
-                      alt="Film crew"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className="text-sm text-white/70 break-words text-[13px] leading-snug max-h-48 overflow-y-auto space-y-1">
-                    {crewCredits.map((line, i) => (
-                      <p key={i}>{line}</p>
+          {/* Meet the Crew */}
+          <div>
+            <h2 className="serif-font text-4xl mb-8">Meet the Crew</h2>
+            <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-start">
+              <button
+                type="button"
+                onClick={() => setCrewOpen(true)}
+                className="md:col-span-2 block w-full aspect-[4/3] overflow-hidden cursor-pointer"
+              >
+                <ImageWithFallback
+                  src={thumb('/images/crew.jpg')}
+                  alt="Film crew"
+                  className="w-full h-full object-cover"
+                />
+              </button>
+              <dl className="md:col-span-3 grid grid-flow-dense grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
+                {crewCredits.map((c, i) => (
+                  <div
+                    key={c.role}
+                    // no rule above the first row: 2 cells on small screens, 3 from lg up
+                    className={`border-white/10 ${
+                      i < 2 ? '' : i === 2 ? 'border-t pt-3 lg:border-t-0 lg:pt-0' : 'border-t pt-3'
+                    } ${c.wide ? 'col-span-full' : ''}`}
+                  >
+                    <dt className="text-sm text-white/40 mb-1">{c.role}</dt>
+                    {c.names.map((n) => (
+                      <dd key={n} className="text-white/90">
+                        {n}
+                      </dd>
                     ))}
                   </div>
-                </div>
-              </div>
+                ))}
+              </dl>
             </div>
           </div>
         </div>
@@ -255,26 +293,27 @@ export function TheGolem() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {btsPhotos.map((photo, i) => (
-              <div
+              <button
+                type="button"
                 key={i}
-                className="group relative aspect-[4/5] overflow-hidden bg-zinc-900 cursor-pointer"
+                className="group relative block w-full aspect-[4/5] overflow-hidden bg-zinc-900 cursor-pointer"
                 onClick={() => {
                   setIndex(i);
                   setOpen(true);
                 }}
               >
                 <ImageWithFallback
-                  src={photo}
+                  src={thumb(photo)}
                   alt={`Behind the scenes ${i + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </div>
+              </button>
             ))}
             <Lightbox
               open={open}
               close={() => setOpen(false)}
               index={index}
-              slides={btsPhotos.map((src) => ({ src }))}
+              slides={btsPhotos.map((src) => ({ src: full(src) }))}
             />
           </div>
         </div>
@@ -283,14 +322,14 @@ export function TheGolem() {
         open={headshotOpen}
         close={() => setHeadshotOpen(false)}
         index={0}
-        slides={headshotSlides.map((s) => ({ src: s }))}
+        slides={headshotSlides.map((s) => ({ src: full(s) }))}
       />
 
       <Lightbox
         open={crewOpen}
         close={() => setCrewOpen(false)}
         index={0}
-        slides={crewSlides.map((s) => ({ src: s }))}
+        slides={crewSlides.map((s) => ({ src: full(s) }))}
       />
     </div>
   );

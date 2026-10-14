@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Linkedin, Instagram, Download, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Linkedin, Instagram, Download } from 'lucide-react';
+import { thumb } from '../img';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function Contact() {
@@ -20,7 +21,8 @@ export function Contact() {
             <div>
               <div className="relative aspect-[3/4] mb-8">
                 <ImageWithFallback
-                  src="/images/contactphoto.jpg"
+                  src={thumb('/images/contactphoto.jpg')}
+                  loading="eager"
                   alt="Aline Frances"
                   className="w-full h-full object-cover"
                 />
@@ -37,13 +39,14 @@ export function Contact() {
 
             <div>
               <h2 className="serif-font text-4xl mb-8">Aline Frances Chalfin</h2>
-              <p className="text-lg text-white/70 mb-8 leading-relaxed">
+              <p className="text-lg text-white/70 mb-6 leading-relaxed">
                 Thanks for stopping by! I'm always interested in challenging, creative opportunities and projects that tell meaningful stories.
-
-My experience creating images and producing content including writing screenplays, making films, and curating museum exhibitions has taught me to thread stories together while giving me the opportunity to work with diverse media in a variety of environments. I have worn a lot of hats in my past creative roles, allowing me to speak the language of multiple disciplines in fast-paced work-spaces.
-
-I am open to learning more about all opportunities and look forward to connecting.
-
+              </p>
+              <p className="text-lg text-white/70 mb-6 leading-relaxed">
+                My experience creating images and producing content including writing screenplays, making films, and curating museum exhibitions has taught me to thread stories together while giving me the opportunity to work with diverse media in a variety of environments. I have worn a lot of hats in my past creative roles, allowing me to speak the language of multiple disciplines in fast-paced work-spaces.
+              </p>
+              <p className="text-lg text-white/70 mb-8 leading-relaxed">
+                I am open to learning more about all opportunities and look forward to connecting.
               </p>
             </div>
           </div>
@@ -97,13 +100,6 @@ I am open to learning more about all opportunities and look forward to connectin
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={20} />
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-                  aria-label="Vimeo"
-                >
-                  <ExternalLink size={20} />
                 </a>
               </div>
             </div>

@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { LandingPage } from './components/LandingPage';
 import { TheGolem } from './components/TheGolem';
@@ -9,6 +10,11 @@ import { Contact } from './components/Contact';
 import { Rebbitzen } from './components/Rebbitzen';
 
 export default function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-black dark">
       <Navigation />
@@ -20,6 +26,7 @@ export default function App() {
         <Route path="/digital-photography" element={<DigitalPhotography />} />
         <Route path="/film-photography" element={<FilmPhotography />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </div>
   );

@@ -2,6 +2,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { thumb, full } from '../img';
 
 export function FilmPhotography() {
   const [open, setOpen] = useState(false);
@@ -46,21 +47,22 @@ export function FilmPhotography() {
           <h2 className="serif-font text-4xl mb-16 text-center">Selected Work</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {photos.map((photo, i) => (
-              <div
+              <button
+                type="button"
                 key={i}
-                className="relative aspect-[3/4] overflow-hidden group cursor-pointer"
+                className="relative block w-full aspect-[3/4] overflow-hidden group cursor-pointer"
                 onClick={() => {
                   setIndex(i);
                   setOpen(true);
                 }}
               >
                 <ImageWithFallback
-                  src={photo}
+                  src={thumb(photo)}
                   alt={`Film Photography ${i + 1}`}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -70,7 +72,7 @@ export function FilmPhotography() {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={photos.map((src) => ({ src }))}
+        slides={photos.map((src) => ({ src: full(src) }))}
       />
     </div>
   );

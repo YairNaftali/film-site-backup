@@ -1,5 +1,6 @@
 import { ArrowDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { thumb, full } from '../img';
 
 export function LandingPage() {
   return (
@@ -9,11 +10,11 @@ export function LandingPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/beddark.jpeg"
-            alt="Background"
+            src={full('/images/beddark.jpeg')}
+            alt=""
+            fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         {/* Content */}
@@ -60,7 +61,8 @@ export function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Link to="/film-photography" className="group relative overflow-hidden aspect-[4/5]">
               <img
-                src="/images/Hilary.jpg"
+                src={thumb('/images/Hilary.jpg')}
+                loading="lazy"
                 alt="Film Photography"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -71,7 +73,8 @@ export function LandingPage() {
 
             <Link to="/the-golem" className="group relative overflow-hidden aspect-[4/5]">
               <img
-                src="/images/golemtextposter.jpg"
+                src={thumb('/images/golemtextposter.jpg')}
+                loading="lazy"
                 alt="The Golem"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -82,7 +85,8 @@ export function LandingPage() {
 
             <Link to="/jewish-museum" className="group relative overflow-hidden aspect-[4/5]">
               <img
-                src="/images/croppedmuseum.jpg"
+                src={thumb('/images/croppedmuseum.jpg')}
+                loading="lazy"
                 alt="Jewish Museum"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />

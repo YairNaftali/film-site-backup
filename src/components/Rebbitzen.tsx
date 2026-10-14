@@ -1,4 +1,4 @@
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { thumb, full } from '../img';
 
 const profiles = [
   {
@@ -41,16 +41,17 @@ export function Rebbitzen() {
           {/* Profiles grid: 3 columns on large screens, stacked on small */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             {profiles.map((p) => (
-              <div key={p.id} className="flex flex-col md:flex-row gap-4">
-                <div className="w-full md:w-40 flex-shrink-0">
+              <div key={p.id} className="flex flex-col gap-4">
+                <div className="w-full">
                   <img
-                    src={p.image}
+                    src={thumb(p.image)}
                     alt={p.name}
-                    className="w-full h-40 object-cover rounded-md border border-white/10"
+                    loading="lazy"
+                    className="w-full aspect-[2/3] object-cover border border-white/10"
                   />
                 </div>
 
-                <div className="flex-1">
+                <div>
                   <h3 className="serif-font text-2xl">{p.name}</h3>
                   <div className="text-sm text-white/60 mb-3">{p.location}</div>
                   <p className="text-sm text-white/80">{p.blurb}</p>

@@ -1,9 +1,11 @@
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Calendar, Play } from 'lucide-react';
+import { useState } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Link } from 'react-router-dom';
 import { thumb, full } from '../img';
 
 export function JewishMuseum() {
+  const [videoStarted, setVideoStarted] = useState(false);
   const projects = [
     {
       id: 1,
@@ -74,17 +76,38 @@ export function JewishMuseum() {
                 <div className={index % 2 === 1 ? 'md:col-start-2' : ''}>
                   <div className="relative aspect-[4/3] overflow-hidden group">
                     {project.title === 'Jewish Museum Promotional Video' ? (
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/ny5VUeFSGLQ"
-                        title={project.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                      />
+                      // Poster first; the YouTube player (~4 MB) only loads once someone presses play.
+                      videoStarted ? (
+                        <iframe
+                          ref={(el) => el?.focus()}
+                          width="100%"
+                          height="100%"
+                          src="https://www.youtube.com/embed/ny5VUeFSGLQ?autoplay=1"
+                          title={project.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setVideoStarted(true)}
+                          aria-label={`Play video: ${project.title}`}
+                          className="block w-full h-full cursor-pointer"
+                        >
+                          <ImageWithFallback
+                            src={thumb('/images/jewish-museum-video.jpg')}
+                            alt=""
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <span className="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <span className="w-16 h-16 rounded-full bg-black/60 border border-white/40 flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black">
+                              <Play size={28} className="ml-1" />
+                            </span>
+                          </span>
+                        </button>
+                      )
                     ) : (
                       <>
                         <ImageWithFallback

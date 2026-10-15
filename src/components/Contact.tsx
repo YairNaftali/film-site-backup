@@ -1,5 +1,5 @@
 import { Mail, Phone, Linkedin, Instagram, Download } from 'lucide-react';
-import { thumb } from '../img';
+import { full } from '../img';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function Contact() {
@@ -21,7 +21,7 @@ export function Contact() {
             <div>
               <div className="relative aspect-[3/4] mb-8">
                 <ImageWithFallback
-                  src={thumb('/images/contactphoto.jpg')}
+                  src={full('/images/aline-headshot.png')}
                   loading="eager"
                   alt="Aline Frances"
                   className="w-full h-full object-cover"
